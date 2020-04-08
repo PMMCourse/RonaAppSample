@@ -16,11 +16,17 @@ namespace RonaApp.Views.Base
         private void BaseLoaded(object sender, RoutedEventArgs e)
         {
             ViewModel?.OnLoaded();
+            ViewModel.RequestToClose += ViewModelRequestToClose;
+        }
+
+        private void ViewModelRequestToClose(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         BaseViewModel ViewModel
         {
-            get;
+            get => (BaseViewModel)DataContext;
         }
 
         public void Dispose()

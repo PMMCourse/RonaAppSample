@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RonaApp.Services;
+using RonaApp.Services.Base;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,10 @@ namespace RonaApp
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Locator.Register<IPatientsService>(new PatientsService());
+            base.OnStartup(e);
+        }
     }
 }

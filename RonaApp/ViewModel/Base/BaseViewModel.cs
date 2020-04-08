@@ -8,6 +8,13 @@ namespace RonaApp.ViewModel.Base
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        public event EventHandler RequestToClose;
+
+        public BaseViewModel()
+        {
+            InitCommands();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
@@ -19,8 +26,15 @@ namespace RonaApp.ViewModel.Base
         }
 
         public virtual void OnLoaded()
-        {
+        { }
 
+        public virtual void Close()
+        {
+            RequestToClose?.Invoke(this, new EventArgs());
         }
+
+        protected abstract void InitCommands();
+
+
     }
 }

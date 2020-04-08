@@ -7,8 +7,8 @@
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-
-    </Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button  Width="100" Height="50">Register patient</Button>
+        <Button Margin="0,16,0,0" Width="100" Height="50">Show patients</Button>
+    </StackPanel>
 </views:BaseView>
