@@ -11,7 +11,7 @@ namespace RonaApp.ViewModel
     {
         public MainViewModel() 
         {
-            
+            InitCommands(); // Lo pongo por que creo recordar que era necesario, aunque sin el también funciona 
         }
 
         
