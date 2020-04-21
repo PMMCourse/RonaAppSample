@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button  Width="100" Height="50">Register patient</Button>
-        <Button Margin="0,16,0,0" Width="100" Height="50">Show patients</Button>
+        <!--Ejer1 - Introducir los comandos para que los botones tengan funcionalidad-->
+        <Button  Width="100" Height="50" Command="{Binding ShowRegisterViewModelCommand}">Register patient</Button>
+        <Button Margin="0,16,0,0" Width="100" Height="50" Command="{Binding ShowPatientsViewModelCommand}">Show patients</Button>
     </StackPanel>
 </views:BaseView>
