@@ -6,16 +6,20 @@
         xmlns:local="clr-namespace:RonaApp.Views"
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
-        Title="RegisterPatientView" Height="450" Width="800">
-    <StackPanel Margin="16">
+        Title="RegisterPatientView" Height="250" Width="250">
+    <StackPanel HorizontalAlignment="Center" Margin="16">
         <!--Parte del Ejercicio 1 para completar el funcionamiento de la aplicación - hacer binding de los textbox hacia el viewmodel para conectar las variables-->
         <TextBlock Text="Name"/>
         <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Name}"/>
         <TextBlock Text="Surname"/>
         <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Surname}"/>
         <TextBlock Text="Virus affected"/>
-        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding VirusName}"/>
+        <ComboBox ItemsSource="{Binding AllVirus}">
+            <ComboBoxItem>
+                <TextBlock Text="{Binding Name}"/>
+            </ComboBoxItem>
+        </ComboBox>
 
-        <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left" Command="{Binding RegisterPatientCommand}">Register patient</Button>
+        <Button Margin="0,16,0,0" Command="{Binding RegisterPatientCommand}">Register patient</Button>
     </StackPanel>
 </views:BaseView>
