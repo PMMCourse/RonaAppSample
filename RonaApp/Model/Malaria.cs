@@ -4,8 +4,8 @@ using System.Text;
 
 namespace RonaApp.Model
 {
-    public class Patient : Person
-    {        
-        public Virus VirusAffected { get; set; }
+    public class Malaria : Virus
+    {
+        public override string Name => "Malaria";
     }
 }

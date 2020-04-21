@@ -17,6 +17,8 @@ namespace RonaApp
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            Locator.Register<IVirusService>(new VirusService());
+            Locator.Register<ILoginService>(new LoginService());
             Locator.Register<IPatientsService>(new PatientsService());
             base.OnStartup(e);
         }

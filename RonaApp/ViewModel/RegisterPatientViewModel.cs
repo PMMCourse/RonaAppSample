@@ -12,12 +12,21 @@ namespace RonaApp.ViewModel
     public class RegisterPatientViewModel : BaseViewModel
     {
         private readonly IPatientsService _patientsService;
+        private readonly IVirusService _virusService;
 
         public RegisterPatientViewModel()
         {
             _patientsService = Locator.Load<IPatientsService>();
+            _virusService = Locator.Load<IVirusService>();
+            _virusService.AllVirus.Add(new COVID());
+            
         }
-
+        private List<Virus> _allVirus;
+        public List<Virus> AllVirus
+        {
+            get => _allVirus;
+            set => SetValue(ref _allVirus, value);
+        }
 
         private RelayCommand _registerPatientCommand;
         public ICommand RegisterPatientCommand => _registerPatientCommand;
@@ -25,20 +34,14 @@ namespace RonaApp.ViewModel
         protected override void InitCommands()
         {
             _registerPatientCommand = new RelayCommand(PerformRegisterPatient);
-        }
-
-        
+        }        
 
         private string _name;
 
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                RaisePropertyChanged();
-            }
+            set => SetValue(ref _name,value);
         }
 
         private string _surname;
@@ -46,11 +49,7 @@ namespace RonaApp.ViewModel
         public string Surname
         {
             get => _surname;
-            set
-            {
-                _surname = value;
-                RaisePropertyChanged();
-            }
+            set => SetValue(ref _surname, value);
         }
 
         private string _virusName;
@@ -58,11 +57,7 @@ namespace RonaApp.ViewModel
         public string VirusName
         {
             get => _virusName;
-            set
-            {
-                _virusName = value;
-                RaisePropertyChanged();
-            }
+            set => SetValue(ref _virusName, value);
         }
 
        
@@ -89,6 +84,8 @@ namespace RonaApp.ViewModel
                     return new COVID();
                 case "Flu":
                     return new Flu();
+                case "Malaria":
+                    return new Malaria();
                 default:
                     return null;
             }
