@@ -85,10 +85,18 @@ namespace RonaApp.ViewModel
         {
             switch(VirusName)
             {
-                case "Covid":
+
+                //Cambio Covid por COVID para que sea igual el nombre del virus de registro que el que devuelve cuando muestra el paciente
+
+                //Parte del ejercicio 7
+                //Añado Ebola a la lista de los virus disponibles
+
+                case "COVID":
                     return new COVID();
                 case "Flu":
                     return new Flu();
+                case "Ebola":
+                    return new Ebola();
                 default:
                     return null;
             }

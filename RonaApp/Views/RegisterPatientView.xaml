@@ -7,14 +7,38 @@
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
         Title="RegisterPatientView" Height="450" Width="800">
-    <StackPanel Margin="16">
-        <TextBlock Text="Name"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
-        <TextBlock Text="Surname"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
-        <TextBlock Text="Virus affected"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
 
-        <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left">Register patient</Button>
+    <!-- Ejer6: Usabilidad mejorada-->
+    
+    <StackPanel Margin="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Name"/>
+        
+        <!-- Parte del Ejer1 -->
+        <!-- Como en la parte del MainWindow, falta hacer los binding en los textboxs y el command en el botón
+        para que realize el comando o acción-->
+
+        <TextBox Width="200" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Name}"/>
+        <TextBlock Text="Surname"/>
+        <TextBox Width="200" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Surname}"/>
+        <TextBlock Text="Virus affected"/>
+        <ComboBox>
+          <ComboBoxItem>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Green" Text="{Binding VirusName}">Flu</TextBlock>
+            </StackPanel>
+        </ComboBoxItem>
+        <ComboBoxItem>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Orange" Text="{Binding VirusName}">COVID</TextBlock>
+            </StackPanel>
+        </ComboBoxItem>
+        <ComboBoxItem>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Red" Text="{Binding VirusName}">Ebola</TextBlock>
+            </StackPanel>
+        </ComboBoxItem>
+    </ComboBox>
+
+    <Button Margin="0,16,0,0" Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding RegisterPatientCommand}">Register patient</Button>
     </StackPanel>
 </views:BaseView>

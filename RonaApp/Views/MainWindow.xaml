@@ -7,8 +7,19 @@
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button  Width="100" Height="50">Register patient</Button>
-        <Button Margin="0,16,0,0" Width="100" Height="50">Show patients</Button>
+        
+        <!-- Ejer1: -->
+        
+        <!-- Los botones no tenían ningún comando añadido, lo único que tenían era el contenido o nombre del botón, 
+        por lo que realmente no hacían nada.
+        Se les añade los Command son su respectivo método de navegación-->
+               
+        <Button Content="Register" Width="100" Height="50" Command="{Binding ShowRegisterViewModelCommand}"/>
+ 
+        <Button Content="Show patients" Margin="0,16,0,0" Width="100" Height="50" Command="{Binding ShowPatientsViewModelCommand}"/>
+        
     </StackPanel>
+    
 </views:BaseView>
