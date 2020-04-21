@@ -1,0 +1,21 @@
+﻿<views:BaseView x:Class="RonaApp.Views.RegisterPatientView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RonaApp.Views"
+        xmlns:views="clr-namespace:RonaApp.Views.Base"
+        mc:Ignorable="d"
+        Title="RegisterPatientView" Height="450" Width="800">
+    <StackPanel Margin="16">
+      <!-- Ejer3-->
+        <TextBlock Text="Name"/>
+        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Name}"/>
+        <TextBlock Text="Surname"/>
+        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Surname}"/>
+        <TextBlock Text="Password"/>
+        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Password}"/>
+
+        <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left" Command="{Binding LoginCommand}">Login patient</Button>
+    </StackPanel>
+</views:BaseView>
