@@ -33,6 +33,16 @@ namespace RonaApp.ViewModel.Base
             RequestToClose?.Invoke(this, new EventArgs());
         }
 
+        protected void SetValue<T>(ref T backingField , T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(backingField, value))
+            {
+                return;
+            }
+            backingField = value;
+            RaisePropertyChanged(propertyName);
+        }
+
         protected abstract void InitCommands();
 
 

@@ -7,14 +7,14 @@
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
         Title="RegisterPatientView" Height="450" Width="800">
-    <StackPanel Margin="16">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Text="Name"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
+        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Name}"/>
         <TextBlock Text="Surname"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
+        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Surname}"/>
         <TextBlock Text="Virus affected"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
+        <ComboBox Width="200" HorizontalAlignment="Left" Text="{Binding VirusName}"/> <!-- No recuerdo como pasar la lista de virus -->
 
-        <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left">Register patient</Button>
+        <Button Width="100" Height="30" Margin="30" HorizontalAlignment="Center" Command="{Binding RegisterPatientCommand}">Register patient</Button>
     </StackPanel>
 </views:BaseView>

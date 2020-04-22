@@ -34,11 +34,7 @@ namespace RonaApp.ViewModel
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                RaisePropertyChanged();
-            }
+            set => SetValue(ref _name, value);
         }
 
         private string _surname;
@@ -46,11 +42,7 @@ namespace RonaApp.ViewModel
         public string Surname
         {
             get => _surname;
-            set
-            {
-                _surname = value;
-                RaisePropertyChanged();
-            }
+            set => SetValue(ref _name, value);
         }
 
         private string _virusName;
@@ -58,11 +50,7 @@ namespace RonaApp.ViewModel
         public string VirusName
         {
             get => _virusName;
-            set
-            {
-                _virusName = value;
-                RaisePropertyChanged();
-            }
+            set => SetValue(ref _name, value);
         }
 
        
