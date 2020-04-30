@@ -92,6 +92,14 @@ namespace RonaApp.ViewModel
                 default:
                     return null;
             }
+
         }
+        private List<Virus> _listaVirus;
+        public List<Virus> listaVirus
+        {
+            get => _listaVirus;
+            set => SetValue(ref _listaVirus, value);
+        }
+
     }
 }

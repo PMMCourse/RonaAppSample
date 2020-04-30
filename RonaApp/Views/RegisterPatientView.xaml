@@ -13,8 +13,12 @@
         <TextBlock Text="Surname"/>
         <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding Surname}"/>
         <TextBlock Text="Virus affected"/>
-        <TextBox Width="200" HorizontalAlignment="Left" Text="{Binding VirusName}"/>
-
+        
+      <Combobox ItemsSource="{Binding listaVirus}">
+        <ComboBoxItem>
+          <TextBox Text="{Binding VirusName}"/>
+        </ComboBoxItem>
+      </Combobox>
         <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left" Command="{Binding RegisterPatientCommand}">Register patient</Button>
     </StackPanel>
 </views:BaseView>
