@@ -22,6 +22,20 @@ namespace RonaApp.ViewModel
         private RelayCommand _registerPatientCommand;
         public ICommand RegisterPatientCommand => _registerPatientCommand;
 
+        public async Task LoadDataAsync()
+        {
+            IsLoading = true;
+            await Task.Run(() => Scenarios = _service.AllScenarios())
+            .ContinueWith(t =>
+            {
+                IsLoading = false;
+                if (t.Exception != null)
+                {
+                    throw t.Exception; //Allow exception to be caught on Application_UnhandledException
+                }
+            });
+        }
+
         protected override void InitCommands()
         {
             _registerPatientCommand = new RelayCommand(PerformRegisterPatient);
@@ -100,6 +114,6 @@ namespace RonaApp.ViewModel
             get => _listaVirus;
             set => SetValue(ref _listaVirus, value);
         }
-
+        
     }
 }

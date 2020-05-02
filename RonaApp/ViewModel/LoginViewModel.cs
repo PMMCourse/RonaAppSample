@@ -27,7 +27,19 @@ namespace RonaApp.ViewModel
             _registerPatientCommand = new RelayCommand(PerformRegisterPatient);
         }
 
-        
+        public async Task LoadDataAsync()
+        {
+            IsLoading = true;
+            await Task.Run(() => Scenarios = _service.AllScenarios())
+            .ContinueWith(t =>
+            {
+                IsLoading = false;
+                if (t.Exception != null)
+                {
+                    throw t.Exception; //Allow exception to be caught on Application_UnhandledException
+                }
+            });
+        }
 
         private string _name;
 
