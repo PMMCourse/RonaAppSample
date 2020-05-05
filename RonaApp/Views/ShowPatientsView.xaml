@@ -8,16 +8,19 @@
         mc:Ignorable="d"
         Title="ShowPatientsView" Height="450" Width="800">
     <Grid>
-        <ListView ItemsSource="{Binding Patients}">
+        <ListView x:Name="ListaPacientes" ItemsSource="{Binding FilteredPatients}" Margin="0,100,0,0">
             <ListView.ItemTemplate>
-                <DataTemplate> <!--Patient-->
-                    <StackPanel>
+                <DataTemplate>
+                    <!--Patient  -->
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding Surname}"/>
-                        <TextBlock Text="{Binding VirusAffected.Name}"/>
+                        <TextBlock Text="{Binding Surname}" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding VirusAffected.Name}" Margin="5,0,0,0"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="562,37,0,0" Command="{Binding FiltrarPacientesCommand}" VerticalAlignment="Top" Width="142" Height="40"/>
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="34" Margin="81,40,0,0" Text="{Binding Path=TxtBusqueda}" TextWrapping="Wrap" VerticalAlignment="Top" Width="398"/>
     </Grid>
 </views:BaseView>
