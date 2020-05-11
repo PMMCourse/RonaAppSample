@@ -8,19 +8,57 @@
         mc:Ignorable="d"
         Title="ShowPatientsView" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="ListaPacientes" ItemsSource="{Binding FilteredPatients}" Margin="0,100,0,0">
-            <ListView.ItemTemplate>
+        <ListBox Name="ObservablePacientes" ItemsSource="{Binding ObservablePatients, Mode=TwoWay}" HorizontalContentAlignment="Stretch" Margin="0,25,0,0">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFEEEEEE"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="200"></ColumnDefinition>
+                                <ColumnDefinition Width="250"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0">Name</Label>
+                            <Label Grid.Column="1">Surname</Label>
+                            <Label Grid.Column="2">Virus Affected</Label>
+                            <Label Grid.Column="3">Time</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+                </ControlTemplate>
+            </ListBox.Template>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--Patient  -->
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding Surname}" Margin="5,0,0,0"/>
-                        <TextBlock Text="{Binding VirusAffected.Name}" Margin="5,0,0,0"/>
-                    </StackPanel>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Column="0" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding Surname}" Grid.Column="1" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding VirusAffected.Name}" Grid.Column="2" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding tiempoFormato}" Grid.Column="3" Margin="5,0,0,0"/>
+                    </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="562,37,0,0" Command="{Binding FiltrarPacientesCommand}" VerticalAlignment="Top" Width="142" Height="40"/>
-        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="34" Margin="81,40,0,0" Text="{Binding Path=TxtBusqueda}" TextWrapping="Wrap" VerticalAlignment="Top" Width="398"/>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Text="{Binding Path=TxtBusqueda}" TextWrapping="Wrap" VerticalAlignment="Top" Width="398"/>
+        <Button x:Name="btnBuscar" Content="Search" HorizontalAlignment="Left" Margin="400,0,0,0" Command="{Binding FiltrarPacientesCommand}" VerticalAlignment="Top" Width="70" />
+        <Button x:Name="btnLimpiar" Content="Refresh" HorizontalAlignment="Left" Margin="475,0,0,0" Command="{Binding LimpiarFiltrarPacientesCommand}" CommandParameter="{Binding ElementName=txtBuscar}" VerticalAlignment="Top" Width="70" />
     </Grid>
 </views:BaseView>

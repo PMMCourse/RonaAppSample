@@ -8,18 +8,19 @@ using System.Windows.Input;
 using System.Windows;
 using RonaApp.Services;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace RonaApp.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
         private readonly IUserService _userservice;
-        private RelayCommand _loginUserCommand;
+        private RelayCommand<object> _loginUserCommand;
         public ICommand LoginUserCommand => _loginUserCommand;
 
         protected override void InitCommands()
         {
-            _loginUserCommand = new RelayCommand(VerifyUserLogin);
+          _loginUserCommand = new RelayCommand<object>(VerifyUserLogin);
         }
 
         private List<User> _usuarios;
@@ -45,13 +46,13 @@ namespace RonaApp.ViewModel
             }
         }
 
-        private String _passwd;
+        private PasswordBox _passwd;
 
-        public String Passwd
+        public PasswordBox Passwd
         {
             get { return _passwd; }
             set {
-                _passwd = value;
+                _passwd = Passwd;
                 RaisePropertyChanged("Passwd");
             }
         }
@@ -67,32 +68,23 @@ namespace RonaApp.ViewModel
             _userservice = Locator.Load<IUserService>();
         }
 
-        private void VerifyUserLogin()
+        private void VerifyUserLogin(object passBox)
         {
-            
-            var consulta = Usuarios.Select(o => o).Where(o => o.username == Username && o.passwd == Passwd).ToList();
+            var Passwd = (PasswordBox)passBox;
+            var consulta = Usuarios.Select(o => o).Where(o => o.username == Username && o.passwd == Passwd.Password).ToList();
             if (consulta.Count == 1)
             {
                 foreach(var user in consulta)
                 {
                     UserRol.Permiso = user.rol;
                 }
-            
                 RonaApp.MainWindow VistaPrincipal = new RonaApp.MainWindow();
                 VistaPrincipal.Show();
                 Close();
-            
+            } else {
+                MessageBox.Show("Login incorrecto", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            else
-            {
-                MessageBox.Show("Login incorrecto");
-            }
-            
         }
-
-
-
     }
 
     //Constante con la que se determinan los permisos de cada usuario
@@ -100,5 +92,7 @@ namespace RonaApp.ViewModel
     {
         public static String Permiso { get; set; }
     }
+
+
 
 }

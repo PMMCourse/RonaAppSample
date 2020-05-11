@@ -9,6 +9,12 @@ namespace RonaApp.Model
     {
         
         public Virus VirusAffected { get; set; }
-        public int tiempoRegistro { get; set; }
+
+        public DateTime horaEntrada { get; set; }
+
+        public TimeSpan tiempoRegistro { get; set; }
+        public string tiempoFormato {
+            get { return (string) tiempoRegistro.ToString(@"hh\:mm"); }
+        }
     }
 }

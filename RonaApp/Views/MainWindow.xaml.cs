@@ -44,6 +44,8 @@ namespace RonaApp
         {
             Views.RegisterPatientView VistaRegistro = new Views.RegisterPatientView();
             VistaRegistro.Show();
+
+            
         }
         //Ejer1: He añadido el metodo .Click al boton, para que abra la siguiente vista.
         private void abrirvistapacientes(object sender, RoutedEventArgs e)

@@ -6,13 +6,25 @@
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         xmlns:local="clr-namespace:RonaApp.Views"
         mc:Ignorable="d"
-        Title="LoginView" Height="450" Width="800">
-    <Grid>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="50,56,0,0"  Text="{Binding Path=Username}" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
-        <TextBox HorizontalAlignment="Left" Margin="36,109,0,0" VerticalAlignment="Top" Text="{Binding Path=Passwd}" Width="134" Height="27"/>
-        <Button Content="Login" HorizontalAlignment="Left" Height="24" Margin="123,193,0,0" Command="{Binding LoginUserCommand}" VerticalAlignment="Top" Width="118"/>
-        <Label Content="Username" HorizontalAlignment="Left" Height="22" Margin="10,29,0,0" VerticalAlignment="Top" Width="111"/>
-        <Label Content="Password" HorizontalAlignment="Left" Height="22" Margin="12,81,0,0" VerticalAlignment="Top" Width="112"/>
+        Title="Acceso" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <StackPanel Margin="16" Width="300">
+        <Grid x:Name="Grid" >
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-    </Grid>
+            <TextBlock Grid.Column="0" Grid.Row="0" Height="Auto" VerticalAlignment="Center" Text="Username" MaxWidth="200"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Height="18" Text="{Binding Path=Username}" MaxWidth="200" TextWrapping="Wrap"/>
+        <!--<TextBox HorizontalAlignment="Left"  Margin="36,109,0,0" VerticalAlignment="Top" Text="{Binding Path=Passwd}" Width="134" Height="27"/>-->
+            <TextBlock Grid.Column="0" Grid.Row="1" Height="Auto" VerticalAlignment="Center" MaxWidth="200" Text="Password" />
+            <PasswordBox Grid.Column="1" Grid.Row="1" Height="18" MaxWidth="200" Name="PasswordTXT"/>
+            <Button Content="Login" Grid.ColumnSpan="2" Grid.Row="2"  MaxWidth="100" Margin="0,20,0,0"  Command="{Binding LoginUserCommand}" CommandParameter="{Binding ElementName=PasswordTXT}"/>
+        </Grid>
+    </StackPanel>
 </views:BaseView>

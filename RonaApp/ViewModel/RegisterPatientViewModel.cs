@@ -91,7 +91,9 @@ namespace RonaApp.ViewModel
                 Name = _name,
                 Surname = _surname,
                 VirusAffected = _Virus,
-                tiempoRegistro = 0
+                horaEntrada = DateTime.Now,
+                tiempoRegistro = TimeSpan.Zero
+                
             };
 
             //PatientsService.Instance.Patients.Add(patient);

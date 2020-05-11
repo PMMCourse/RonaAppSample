@@ -2,7 +2,9 @@
 using RonaApp.Views.Base;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,5 +26,6 @@ namespace RonaApp.Views
             InitializeComponent();
             DataContext = new LoginViewModel();
         }
+
     }
 }
