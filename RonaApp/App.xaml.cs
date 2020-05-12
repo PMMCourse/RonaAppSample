@@ -15,9 +15,16 @@ namespace RonaApp
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        //Convertir el metodo en asincrono para las llamadas a los servicios
+
+        protected override async void OnStartup(StartupEventArgs e)
         {
-            Locator.Register<IPatientsService>(new PatientsService());
+            await Task.Run(() => { 
+                Locator.Register<IPatientsService>(new PatientsService());
+                Locator.Register<IUserService>(new UserService());
+                Locator.Register<IVirusService>(new VirusService());
+            });
+            
             base.OnStartup(e);
         }
     }

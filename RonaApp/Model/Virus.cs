@@ -4,8 +4,8 @@ using System.Text;
 
 namespace RonaApp.Model
 {
-    public abstract class Virus
+    public class Virus
     {
-        public abstract string Name { get; }
+        public String Name { get; set; }
     }
 }

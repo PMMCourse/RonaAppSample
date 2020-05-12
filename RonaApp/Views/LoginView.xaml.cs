@@ -1,9 +1,10 @@
-﻿using RonaApp.Model;
-using RonaApp.ViewModel;
+﻿using RonaApp.ViewModel;
+using RonaApp.Views.Base;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,20 +13,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace RonaApp.Views
 {
-    /// <summary>D:\Projects\Fesac\MVVMRona\RonaApp\RonaApp\Views\ShowPatientsView.xaml.cs
-    /// Interaction logic for ShowPatientsView.xaml
+    /// <summary>
+    /// Lógica de interacción para LoginView.xaml
     /// </summary>
-    public partial class ShowPatientsView
+    public partial class LoginView
     {
-        public ShowPatientsView()
+        public LoginView()
         {
             InitializeComponent();
-            DataContext = new ShowPatientsViewModel();
-
+            DataContext = new LoginViewModel();
         }
 
     }

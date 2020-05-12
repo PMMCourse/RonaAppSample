@@ -22,8 +22,9 @@ namespace RonaApp.Views
         {
             InitializeComponent();
             DataContext = new RegisterPatientViewModel();
-        }
 
-        
+            
+
+        }
     }
 }

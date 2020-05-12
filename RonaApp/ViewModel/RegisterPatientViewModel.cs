@@ -4,6 +4,7 @@ using RonaApp.Services.Base;
 using RonaApp.ViewModel.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 
@@ -11,11 +12,16 @@ namespace RonaApp.ViewModel
 {
     public class RegisterPatientViewModel : BaseViewModel
     {
-        private readonly IPatientsService _patientsService;
+        private readonly IVirusService _virusService;
+
+        //private readonly IPatientsService _patientsService;
+        private IPatientsService _patientsService;
+
 
         public RegisterPatientViewModel()
         {
             _patientsService = Locator.Load<IPatientsService>();
+            _virusService = Locator.Load<IVirusService>();
         }
 
 
@@ -37,7 +43,7 @@ namespace RonaApp.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("Name");
             }
         }
 
@@ -49,49 +55,60 @@ namespace RonaApp.ViewModel
             set
             {
                 _surname = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("Surname");
             }
         }
 
-        private string _virusName;
 
-        public string VirusName
+
+        private Virus _virus;
+
+        public Virus _Virus
         {
-            get => _virusName;
-            set
-            {
-                _virusName = value;
-                RaisePropertyChanged();
-            }
+            get { return _virus; }
+            set { 
+                    _virus = value;
+                    RaisePropertyChanged();
+                }
         }
 
-       
+        private List<Virus> _listavirus;
+
+        public List<Virus> ListaVirus
+        {
+            get => _listavirus;
+            set {
+                    _listavirus = value;
+                    RaisePropertyChanged();
+                }
+        }
+
+        
         private void PerformRegisterPatient()
         {
             var patient = new Patient()
             {
                 Name = _name,
                 Surname = _surname,
-                VirusAffected = GetVirusAffected()
+                VirusAffected = _Virus,
+                horaEntrada = DateTime.Now,
+                tiempoRegistro = TimeSpan.Zero
+                
             };
 
             //PatientsService.Instance.Patients.Add(patient);
             _patientsService.Patients.Add(patient);
 
+            
+
             Close();
         }
 
-        private Virus GetVirusAffected()
+        public override void OnLoaded()
         {
-            switch(VirusName)
-            {
-                case "Covid":
-                    return new COVID();
-                case "Flu":
-                    return new Flu();
-                default:
-                    return null;
-            }
+            base.OnLoaded();
+            ListaVirus = _virusService.ListaVirus;
         }
+
     }
 }

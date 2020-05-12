@@ -6,15 +6,18 @@
         xmlns:local="clr-namespace:RonaApp.Views"
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
-        Title="RegisterPatientView" Height="450" Width="800">
+        Title="RegisterPatientView" Height="293" Width="283">
     <StackPanel Margin="16">
+<!-- Ejer1: Añado el Binding con la propiedad Path, que será la variable donde guardará los datos-->
         <TextBlock Text="Name"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
+        <TextBox x:Name="Name" Text="{Binding Path=Name}" Width="200" HorizontalAlignment="Left"/>
         <TextBlock Text="Surname"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
+        <TextBox x:Name="Surname" Text="{Binding Path=Surname}" Width="200" HorizontalAlignment="Left"/>
         <TextBlock Text="Virus affected"/>
-        <TextBox Width="200" HorizontalAlignment="Left"/>
-
-        <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left">Register patient</Button>
+        <!--<TextBox x:Name="VirusAffected" Text="{Binding Path=VirusName}" Width="200" HorizontalAlignment="Left"/>
+        Ejer1: Bindeo el Command RegisterPatientCommand para que ejecute l metodo de regisstro y lo añada a la lista -->
+        <ComboBox Width="120" HorizontalAlignment="Left" ItemsSource="{Binding Path=ListaVirus}" DisplayMemberPath="Name"  SelectedItem="{Binding Path=_Virus}" SelectedIndex="0" IsEnabled="True" IsEditable="False"/>
+        <Button Margin="0,16,0,0" Width="100" Height="50" HorizontalAlignment="Left" Command="{Binding RegisterPatientCommand}">Register patient</Button>
+        
     </StackPanel>
 </views:BaseView>

@@ -8,5 +8,6 @@ namespace RonaApp.Services
     public class PatientsService : IPatientsService
     {
         public List<Patient> Patients { get; private set; } = new List<Patient>();  
+        
     }
 }

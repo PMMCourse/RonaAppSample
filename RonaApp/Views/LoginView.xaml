@@ -1,0 +1,30 @@
+﻿<views:BaseView x:Class="RonaApp.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:RonaApp.Views.Base"
+        xmlns:local="clr-namespace:RonaApp.Views"
+        mc:Ignorable="d"
+        Title="Acceso" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <StackPanel Margin="16" Width="300">
+        <Grid x:Name="Grid" >
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Height="Auto" VerticalAlignment="Center" Text="Username" MaxWidth="200"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Height="18" Text="{Binding Path=Username}" MaxWidth="200" TextWrapping="Wrap"/>
+        <!--<TextBox HorizontalAlignment="Left"  Margin="36,109,0,0" VerticalAlignment="Top" Text="{Binding Path=Passwd}" Width="134" Height="27"/>-->
+            <TextBlock Grid.Column="0" Grid.Row="1" Height="Auto" VerticalAlignment="Center" MaxWidth="200" Text="Password" />
+            <PasswordBox Grid.Column="1" Grid.Row="1" Height="18" MaxWidth="200" Name="PasswordTXT"/>
+            <Button Content="Login" Grid.ColumnSpan="2" Grid.Row="2"  MaxWidth="100" Margin="0,20,0,0"  Command="{Binding LoginUserCommand}" CommandParameter="{Binding ElementName=PasswordTXT}"/>
+        </Grid>
+    </StackPanel>
+</views:BaseView>

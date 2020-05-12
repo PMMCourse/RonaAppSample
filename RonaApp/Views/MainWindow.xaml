@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:RonaApp"
         xmlns:views="clr-namespace:RonaApp.Views.Base"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button  Width="100" Height="50">Register patient</Button>
-        <Button Margin="0,16,0,0" Width="100" Height="50">Show patients</Button>
+        Title="MainWindow" Height="345" Width="336">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="230" Width="344">
+        <Button x:Name="BotonRegistro" Width="100" Height="50" Click="abrirvistaregistro">Register patient</Button>
+        <Button x:Name="BotonLista" Margin="0,16,0,0" Width="100" Height="50" Click="abrirvistapacientes">Show patients</Button>
+        <Button x:Name="Logout" Width="100" Height="50" Margin="0,32,0,0" Click="Logout_Click">Logout</Button>
+
     </StackPanel>
+
 </views:BaseView>
