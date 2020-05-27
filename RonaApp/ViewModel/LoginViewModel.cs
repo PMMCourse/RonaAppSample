@@ -9,18 +9,23 @@ using System.Windows.Input;
 
 namespace RonaApp.ViewModel
 {
-    public class RegisterPatientViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
         private readonly IPatientsService _patientsService;
 
-        public RegisterPatientViewModel()
+        public LoginViewModel()
         {
             _patientsService = Locator.Load<IPatientsService>();
         }
 
 
-        private RelayCommand _registerPatientCommand;
-        public ICommand RegisterPatientCommand => _registerPatientCommand;
+        private RelayCommand _loginCommand;
+        public ICommand LoginCommand => _loginCommand;
+
+        protected override void InitCommands()
+        {
+            _registerPatientCommand = new RelayCommand(PerformRegisterPatient);
+        }
 
         public async Task LoadDataAsync()
         {
@@ -35,13 +40,6 @@ namespace RonaApp.ViewModel
                 }
             });
         }
-
-        protected override void InitCommands()
-        {
-            _registerPatientCommand = new RelayCommand(PerformRegisterPatient);
-        }
-
-        
 
         private string _name;
 
@@ -64,6 +62,15 @@ namespace RonaApp.ViewModel
             {
                 _surname = value;
                 RaisePropertyChanged();
+            }
+        }
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = "hardcodeada";
             }
         }
 
@@ -106,14 +113,6 @@ namespace RonaApp.ViewModel
                 default:
                     return null;
             }
-
         }
-        private List<Virus> _listaVirus;
-        public List<Virus> listaVirus
-        {
-            get => _listaVirus;
-            set => SetValue(ref _listaVirus, value);
-        }
-        
     }
 }

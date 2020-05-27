@@ -34,7 +34,15 @@ namespace RonaApp.ViewModel.Base
         }
 
         protected abstract void InitCommands();
-
+        protected void SetValue<T>(ref T backingField , T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(backingField, value))
+            {
+                return "";
+            }
+            backingField = value;
+            RaisePropertyChanged(propertyName);
+        }
 
     }
 }

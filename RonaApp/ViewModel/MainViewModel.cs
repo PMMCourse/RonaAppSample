@@ -31,7 +31,9 @@ namespace RonaApp.ViewModel
         private void PerformRegisterPatient()
         {
             new RegisterPatientView().Show();
-        }
+            List<Patient> lista = new List<Patient>();
+           
+           }
 
         private void PerformShowPatients()
         {

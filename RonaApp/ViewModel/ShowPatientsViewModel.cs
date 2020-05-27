@@ -24,6 +24,9 @@ namespace RonaApp.ViewModel
             }
         }
 
+        private ICommand _SearchCommand;
+
+        public Command searchCommand => _SearchCommand;
         public ShowPatientsViewModel()
         {
             _patientsService = Locator.Load<IPatientsService>();
